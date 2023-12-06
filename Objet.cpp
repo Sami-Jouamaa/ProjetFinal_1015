@@ -6,6 +6,8 @@ Objet::Objet(string nomObjet, string descriptionObjet)
 	description = descriptionObjet;
 }
 
+Objet::~Objet() {}
+
 string Objet::getnom()
 {
 	return nom;
