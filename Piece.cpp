@@ -11,6 +11,8 @@ Piece::Piece(string nomPiece, string descriptionPiece)
 	objets;
 }
 
+Piece::~Piece() {}
+
 string Piece::getNom()
 {
 	return nom;
