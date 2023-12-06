@@ -8,6 +8,7 @@ class Piece
 {
 public:
     Piece(string nomPiece, string descriptionPiece);
+    ~Piece();
 
     void setSud(Piece* piece);
     void setNord(Piece* piece);
