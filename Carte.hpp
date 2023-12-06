@@ -5,9 +5,12 @@
 class Carte
 {
 public:
-    Carte(Piece* salleDepart);
-    void ajouterPiece(Piece piece);
+    Carte(Piece& salleDepart, vector<Piece> vecteurPieces);
+    ~Carte();
+    void ajouterPiece(Piece& piece);
 
+    Piece* getSalleActuelle();
+    void setSalleActuelle(Piece& salle);
 
 private:
     vector<Piece> pieces;
