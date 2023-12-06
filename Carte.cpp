@@ -1,12 +1,24 @@
 #include "Carte.hpp"
 
-Carte::Carte(Piece* salleDepart)
+Carte::Carte(Piece& salleDepart, vector<Piece> vecteurPieces)
 {
-	vector<Piece>pieces;
-	salleActuelle = salleDepart;
+	pieces = vecteurPieces;
+	salleActuelle = &salleDepart;
 }
 
-void Carte::ajouterPiece(Piece piece)
+Carte::~Carte() {}
+
+Piece* Carte::getSalleActuelle()
+{
+	return salleActuelle;
+}
+
+void Carte::setSalleActuelle(Piece& nouvelleSalle)
+{
+	salleActuelle = &nouvelleSalle;
+}
+
+void Carte::ajouterPiece(Piece& piece)
 {
 	pieces.push_back(piece);
 }
