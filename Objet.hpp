@@ -7,6 +7,7 @@ class Objet
 {
 public:
     Objet(string nomObjet, string descriptionObjet);
+    ~Objet();
     string getDescription();
     string getnom();
 
