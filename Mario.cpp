@@ -7,6 +7,8 @@ Mario::Mario()
 	nombreEtoiles = 0;
 }
 
+Mario::~Mario() {}
+
 void Mario::wahoo()
 {
 	cout << "Wahoo !" << endl;
