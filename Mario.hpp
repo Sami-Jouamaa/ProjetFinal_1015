@@ -9,6 +9,7 @@ class Mario
 
 public:
     Mario();
+    ~Mario();
 
     void wahoo();
 
