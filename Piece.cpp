@@ -1,15 +1,8 @@
 #include "Piece.hpp"
 
-Piece::Piece(string nomPiece, string descriptionPiece)
-{
-	nom = nomPiece;
-	description = descriptionPiece;
-	nord = nullptr;
-	sud = nullptr;
-	ouest = nullptr;
-	est = nullptr;
-	objets;
-}
+Piece::Piece(std::string nomPiece, std::string descriptionPiece, int nombreEtoiles = 0)
+        : nom(nomPiece), description(descriptionPiece), nombreEtoiles(nombreEtoiles),
+          nord(nullptr), sud(nullptr), ouest(nullptr), est(nullptr), objets() {}
 
 Piece::~Piece() {}
 
@@ -86,4 +79,9 @@ void Piece::setEst(Piece* piece)
 void Piece::setOuest(Piece* piece)
 {
     ouest = piece;
+}
+
+void Piece::recupererEtoile({
+
+
 }

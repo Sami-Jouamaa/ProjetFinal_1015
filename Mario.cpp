@@ -7,6 +7,10 @@ Mario::Mario()
 	nombreEtoiles = 0;
 }
 
+void gagnerEtoile() {
+        nombreEtoiles++;
+    }
+
 Mario::~Mario() {}
 
 void Mario::wahoo()

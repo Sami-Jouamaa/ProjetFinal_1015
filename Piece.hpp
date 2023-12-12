@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Objet.hpp"
+#include "Tableau.cpp"
 using namespace std;
 
 class Piece
@@ -31,7 +32,9 @@ public:
 private:
     string nom;
     string description;
+    Tableau tableau;
     vector<Objet> objets;
+    int etoilesRequises;
     Piece* nord;
     Piece* sud;
     Piece* est;

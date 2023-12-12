@@ -13,6 +13,8 @@ public:
 
     void wahoo();
 
+    void gagnerEtoile();
+
 private:
     vector<Objet> objets;
     bool avoirYoshi;

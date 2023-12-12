@@ -1,3 +1,4 @@
+#pragma once
 #include "Objet.hpp"
 #include "Piece.hpp"
 #include "Mario.hpp"
@@ -63,7 +64,7 @@ int main()
 	cout << "Controles sont :" << endl;
 	cout << '\t' << "N pour aller au Nord de la piece ou vous etes en ce moment." << endl;
 	cout << '\t' << "S pour aller au Sud de la piece ou vous etes en ce moment." << endl;
-	cout << '\t' << "E pour aller a l'est de la piece ou vous etes en ce moment." << endl;
+	cout << '\t' << "E pour aller a l'Est de la piece ou vous etes en ce moment." << endl;
 	cout << '\t' << "O pour aller a l'Ouest de la piece ou vous etes en ce moment." << endl;
 	cout << '\t' << "START pour commencer le jeu" << endl;
 	cout << '\t' << "EXIT pour sortir du jeu" << endl;
@@ -72,7 +73,7 @@ int main()
 
 	while (inputMovement != "START")
 	{
-		cout << "Type START to commence the game : ";
+		cout << "Écrivez START pour commencer la partie ";
 		cin >> inputMovement;
 		if (inputMovement == "EXIT")
 		{
@@ -85,7 +86,16 @@ int main()
 		cout << endl;
 		cout << "----" << carte.getSalleActuelle()->getNom() << "----" << endl;
 
-		cout << "Your choices are :" << endl;
+		// Liste des objets dans la salle
+
+		if (!carte.getSalleActuelle().objets.empty()){
+			cout << "Il y a des objets dans la salle : " << endl;
+			for (const Objet& objet : carte.getSalleActuelle().objets) {
+				cout << objet.getNom() << " : " << objet.getDescription() << "." << endl;
+			}
+		}
+
+		cout << "Vous pouvez vous diriger vers :" << endl;
 		
 		if (carte.getSalleActuelle()->getNord() != nullptr)
 		{
@@ -107,7 +117,7 @@ int main()
 			cout << '\t' << "W:" << carte.getSalleActuelle()->getOuest()->getNom() << endl;
 		}
 
-		cout << "Type your next move : ";
+		cout << "Vers ou voulez-vous vous diriger ? (N/S/E/W) : ";
 		cin >> inputMovement;
 		cout << endl;
 
@@ -119,7 +129,7 @@ int main()
 			}
 			else
 			{
-				cout << "You cannot go North of where you are right now." << endl;
+				cout << "Il n'y a aucun moyen d'aller vers le Nord pour le moment." << endl;
 			}
 		}
 		else if (inputMovement == "S")
@@ -130,7 +140,7 @@ int main()
 			}
 			else
 			{
-				cout << "You cannot go South of where you are right now." << endl;
+				cout << "Il n'y a aucun moyen d'aller vers le Sud pour le moment." << endl;
 			}
 		}
 		else if (inputMovement == "W")
@@ -141,7 +151,7 @@ int main()
 			}
 			else
 			{
-				cout << "You cannot go West of where you are right now." << endl;
+				cout << "Il n'y a aucun moyen d'aller vers l'Ouest pour le moment." << endl;
 			}
 		}
 		else if (inputMovement == "E")
@@ -152,12 +162,16 @@ int main()
 			}
 			else
 			{
-				cout << "You cannot go East from where you are right now." << endl;
+				cout << "Il n'y a aucun moyen d'aller vers l'Est pour le moment." << endl;
 			}
 		}
 		else
 		{
-			cout << "Please type a valid movement input." << endl;
+			cout << "Veuillez entrer une commande de déplacement valide." << endl;
 		}
+
+		
+
+
 	}
 }

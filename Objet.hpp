@@ -6,7 +6,8 @@ using namespace std;
 class Objet
 {
 public:
-    Objet(string nomObjet, string descriptionObjet);
+    Objet(std::string nomObjet, std::string descriptionObjet)
+    : nom(nomObjet), description(descriptionObjet) {}
     ~Objet();
     string getDescription();
     string getnom();
