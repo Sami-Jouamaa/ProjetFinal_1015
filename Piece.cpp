@@ -1,39 +1,39 @@
 #include "Piece.hpp"
 
-Piece::Piece(std::string nomPiece, std::string descriptionPiece, int nombreEtoiles = 0)
-        : nom(nomPiece), description(descriptionPiece), nombreEtoiles(nombreEtoiles),
-          nord(nullptr), sud(nullptr), ouest(nullptr), est(nullptr), objets() {}
+Piece::Piece(string nomPiece, string descriptionPiece, int nombreEtoiles)
+    :nom(nomPiece), description(descriptionPiece), etoilesRequises(nombreEtoiles),
+    nord(nullptr), sud(nullptr), ouest(nullptr), est(nullptr), objets() {}
 
 Piece::~Piece() {}
 
 string Piece::getNom()
 {
-	return nom;
+    return nom;
 }
 
 string Piece::getDescription()
 {
-	return description;
+    return description;
 }
 
 Piece* Piece::getNord()
 {
-	return nord;
+    return nord;
 }
 
 Piece* Piece::getSud()
 {
-	return sud;
+    return sud;
 }
 
 Piece* Piece::getEst()
 {
-	return est;
+    return est;
 }
 
 Piece* Piece::getOuest()
 {
-	return ouest;
+    return ouest;
 }
 
 void Piece::ajouterObjet(Objet objet)
@@ -81,7 +81,22 @@ void Piece::setOuest(Piece* piece)
     ouest = piece;
 }
 
-void Piece::recupererEtoile({
+bool Piece::isObjetsEmpty()
+{
+    if (objets.empty())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
-
+void Piece::printObjects()
+{
+    for (int i = 0; i < objets.size(); i++)
+    {
+        cout << objets[i].getnom() << ": " << objets[i].getDescription() << endl;
+    }
 }
