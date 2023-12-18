@@ -1,5 +1,11 @@
 #include "Objet.hpp"
 
+Objet::Objet()
+{
+	nom = "";
+	description = "";
+}
+
 Objet::Objet(string nomObjet, string descriptionObjet)
 {
 	nom = nomObjet;
