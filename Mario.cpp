@@ -7,9 +7,9 @@ Mario::Mario()
 	nombreEtoiles = 0;
 }
 
-void gagnerEtoile() {
-        nombreEtoiles++;
-    }
+void Mario::gagnerEtoile() {
+	nombreEtoiles++;
+}
 
 Mario::~Mario() {}
 
