@@ -8,7 +8,8 @@ using namespace std;
 class Piece
 {
 public:
-    Piece(string nomPiece, string descriptionPiece);
+    Piece(string nomPiece, string descriptionPiece, int etoilesRequises);
+
     ~Piece();
 
     void setSud(Piece* piece);
@@ -29,10 +30,13 @@ public:
     Piece* getEst();
     Piece* getOuest();
 
+    bool isObjetsEmpty();
+
+    void printObjects();
+
 private:
     string nom;
     string description;
-    Tableau tableau;
     vector<Objet> objets;
     int etoilesRequises;
     Piece* nord;
