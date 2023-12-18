@@ -4,7 +4,7 @@
 #include <string>
 #include "Objet.hpp"
 
-class Mario 
+class Mario
 {
 
 public:
