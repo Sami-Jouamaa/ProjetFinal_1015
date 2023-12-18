@@ -11,22 +11,24 @@ using namespace std;
 int main()
 {
 	vector<Piece> pieces;
+	
+	//Nombres d'etoiles a changer au besoin
 
-	Piece sallePrincipale("Salle principale", "Premiere piece en entrant");
-	Piece couloirGauche("Couloir Gauche", "Connecte au donjon et Tableau de bombes"); //Porte gauche
-	Piece salleBombe("Salle avec un Tableau avec des Bombes", "Cul-de-sac"); //Tableau bombe
-	Piece salleEnneigee("Salle avec un Tableau enneige", "Portal vers le pays des pingouins");
-	Piece aquarium("Aquarium", "Portail vers le niveau aquatique"); //Tableau  eau
-	Piece donjon("Donjon", "Portail vers le niveau de lave"); //Niveau lave
-	Piece couloirDroit("Couloir Droit", "Connecte au tableau d'eau, cour arriere et tableau de neige"); //Porte droite
-	Piece courArriere("Cour Arriere", "Cul-de-sac");
-	Piece dehors("Dehors", "À l'exterieur du château"); //Salle initiale
-	Piece escaliers("En haut des escaliers", "Debut du deuxieme etage");
-	Piece horloge("Salle avec une Horloge Geante", "Portail vers horloge"); //Tableau horloge
-	Piece exposition("Salle d'exposition", "Salle avec une statue");
+	Piece sallePrincipale("Salle principale", "Premiere piece en entrant", 0);
+	Piece couloirGauche("Couloir Gauche", "Connecte au donjon et Tableau de bombes", 0); //Porte gauche
+	Piece salleBombe("Salle avec un Tableau avec des Bombes", "Cul-de-sac", 2); //Tableau bombe
+	Piece salleEnneigee("Salle avec un Tableau enneige", "Portal vers le pays des pingouins", 1); //Tableau pingouins
+	Piece aquarium("Aquarium", "Portail vers le niveau aquatique", 3); //Tableau  eau
+	Piece donjon("Donjon", "Portail vers le niveau de lave", 4); //Niveau lave
+	Piece couloirDroit("Couloir Droit", "Connecte au tableau d'eau, cour arriere et tableau de neige", 0); //Porte droite
+	Piece courArriere("Cour Arriere", "Cul-de-sac", 0);
+	Piece dehors("Dehors", "À l'exterieur du château", 0); //Salle initiale
+	Piece escaliers("En haut des escaliers", "Debut du deuxieme etage", 0);
+	Piece horloge("Salle avec une Horloge Geante", "Portail vers horloge", 5); //Tableau horloge
+	Piece exposition("Salle d'exposition", "Salle avec une statue", 0);
 	//Piece courArriere("Cour arriere"); On a dejà une cour arriere
-	Piece infini("Escalier infini", "Escalier interminable jusqu'au boss");
-	Piece bossFinal("Boss final", "Bowser");
+	Piece infini("Escalier infini", "Escalier interminable jusqu'au boss", 0);
+	Piece bossFinal("Boss final", "Bowser", 6);
 
 	sallePrincipale.connecterPieces(couloirGauche, "Ouest");
 	sallePrincipale.connecterPieces(couloirDroit, "Est");
@@ -41,6 +43,18 @@ int main()
 	escaliers.connecterPieces(horloge, "Est");
 	escaliers.connecterPieces(exposition, "Ouest");
 	infini.connecterPieces(bossFinal, "Nord");
+
+	Tableau tableauBombe("Tableau bombes", "Un portail vers le pays de King Bob-Omb", 1);
+	Tableau tableauPinguoins("Tableau pingouins", "Un portail vers le pays enneigé des pingouins", 1);
+	Tableau tableauEau("Tableau aquatique", "Un tableau menant au niveau aquatique du château", 1);
+	Tableau tableauLave("Tableau lave", "Un portail vers la terre infernale de lave", 1);
+	Tableau tableauHorloge("Tableau horloge", "Un portail vers le pays des horloges", 1);
+
+	salleBombe.ajouterObjet(tableauBombe);
+	salleEnneigee.ajouterObjet(tableauPinguoins);
+	aquarium.ajouterObjet(tableauEau);
+	donjon.ajouterObjet(tableauLave);
+	horloge.ajouterObjet(tableauHorloge);
 
 	Carte carte(sallePrincipale, pieces);
 
@@ -88,15 +102,14 @@ int main()
 
 		// Liste des objets dans la salle
 
-		if (!carte.getSalleActuelle().objets.empty()){
+		if (!(carte.getSalleActuelle()->isObjetsEmpty()))
+		{
 			cout << "Il y a des objets dans la salle : " << endl;
-			for (const Objet& objet : carte.getSalleActuelle().objets) {
-				cout << objet.getNom() << " : " << objet.getDescription() << "." << endl;
-			}
+			carte.getSalleActuelle()->printObjects();
 		}
 
 		cout << "Vous pouvez vous diriger vers :" << endl;
-		
+
 		if (carte.getSalleActuelle()->getNord() != nullptr)
 		{
 			cout << '\t' << "N:" << carte.getSalleActuelle()->getNord()->getNom() << endl;
@@ -106,12 +119,12 @@ int main()
 		{
 			cout << '\t' << "S:" << carte.getSalleActuelle()->getSud()->getNom() << endl;
 		}
-		
+
 		if (carte.getSalleActuelle()->getEst() != nullptr)
 		{
 			cout << '\t' << "E:" << carte.getSalleActuelle()->getEst()->getNom() << endl;
 		}
-		
+
 		if (carte.getSalleActuelle()->getOuest() != nullptr)
 		{
 			cout << '\t' << "W:" << carte.getSalleActuelle()->getOuest()->getNom() << endl;
@@ -169,9 +182,5 @@ int main()
 		{
 			cout << "Veuillez entrer une commande de déplacement valide." << endl;
 		}
-
-		
-
-
 	}
 }
