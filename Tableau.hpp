@@ -1,19 +1,19 @@
 #pragma once
 #include <string>
 #include "Objet.cpp"
+#include <iostream>
 
 using namespace std;
 
 class Tableau : public Objet
 {
 public:
-    Tableau(std::string nomObjet, std::string descriptionObjet, int etoiles)
-    : nom(nomObjet), description(descriptionObjet), nombreEtoiles(etoiles) {}
+    Tableau(string nomObjet, string descriptionObjet, int etoiles);
     ~Tableau();
 
-    void visiterTableau();
+    int visiterTableau();
 
-    int nombreEtoiles;
+    int nombreEtoiles; 
 
 private:
     std::string description;
