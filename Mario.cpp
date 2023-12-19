@@ -1,10 +1,11 @@
+#pragma once
 #include "Mario.hpp"
 
-Mario::Mario()
+Mario::Mario(bool aYoshi, int etoilesPossedees)
 {
 	vector<Objet>objets;
-	avoirYoshi = false;
-	nombreEtoiles = 0;
+	avoirYoshi = aYoshi;
+	nombreEtoiles = etoilesPossedees;
 }
 
 void Mario::gagnerEtoile() {
@@ -12,6 +13,21 @@ void Mario::gagnerEtoile() {
 }
 
 Mario::~Mario() {}
+
+int Mario::getNbreEtoilesMario()
+{
+	return nombreEtoiles;
+}
+
+void Mario::setNbreEtoilesMario(int etoiles)
+{
+	nombreEtoiles = etoiles;
+}
+
+void Mario::ajouterObjet(Objet objet)
+{
+	objets.push_back(objet);
+}
 
 void Mario::wahoo()
 {
