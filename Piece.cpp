@@ -1,17 +1,27 @@
+#pragma once
 #include "Piece.hpp"
 
 Piece::Piece(string nomPiece, string descriptionPiece, int nombreEtoiles)
-    :nom(nomPiece), description(descriptionPiece), etoilesRequises(nombreEtoiles),
-    nord(nullptr), sud(nullptr), ouest(nullptr), est(nullptr), objets() {}
+{
+    nom = nomPiece;
+    description = descriptionPiece;
+    etoilesRequises = nombreEtoiles;
+    nord = nullptr;
+    sud = nullptr;
+    ouest = nullptr;
+    est = nullptr;
+    vector<Objet>objects;
+    vector<Tableau>tableaux;
+}
 
 Piece::~Piece() {}
 
-string Piece::getNom()
+string Piece::getNomPiece()
 {
     return nom;
 }
 
-string Piece::getDescription()
+string Piece::getDescriptionPiece()
 {
     return description;
 }
@@ -81,6 +91,11 @@ void Piece::setOuest(Piece* piece)
     ouest = piece;
 }
 
+int Piece::getNbreEtoilesRequises()
+{
+    return etoilesRequises;
+}
+
 bool Piece::isObjetsEmpty()
 {
     if (objets.empty())
@@ -93,10 +108,93 @@ bool Piece::isObjetsEmpty()
     }
 }
 
+bool Piece::isTableauxEmpty()
+{
+    if (tableaux.empty())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool Piece::isTableauInPiece(string nomTableau)
+{
+    for (int i = 0; i < tableaux.size(); i++)
+    {
+        if (tableaux[i].getNomTableau() == nomTableau)
+        {
+            return true;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    return false;
+}
+
+bool Piece::isObjetInPiece(string nomObjet)
+{
+    for (int i = 0; i < objets.size(); i++)
+    {
+        if (objets[i].getNomObjet() == nomObjet)
+        {
+            return true;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    return false;
+}
+
+Objet Piece::getObjet(string nomObjet)
+{
+    for (int i = 0; i < objets.size(); i++)
+    {
+        if (objets[i].getNomObjet() == nomObjet)
+        {
+            return objets[i];
+        }
+        else
+        {
+            continue;
+        }
+    }
+}
+
+void Piece::decrementerTableauEtoiles()
+{
+    tableaux[0].setNbreEtoiles(0);
+}
+
 void Piece::printObjects()
 {
     for (int i = 0; i < objets.size(); i++)
     {
-        cout << objets[i].getnom() << ": " << objets[i].getDescription() << endl;
+        cout << objets[i].getNomObjet() << ": " << objets[i].getDescriptionObjet() << endl;
     }
 }
+
+void Piece::ajouterTableau(Tableau tableau)
+{
+    tableaux.push_back(tableau);
+}
+
+void Piece::printTableaux()
+{
+    for (int i = 0; i < tableaux.size(); i++)
+    {
+        cout << tableaux[i].getNomTableau() << ": " << tableaux[i].getDescriptionTableau() << endl;
+    }
+}
+
+int Piece::getTableauNbreEtoiles()
+{
+    return (tableaux[0].getNbreEtoiles());
+}
+
