@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Objet.cpp"
+#include "Objet.hpp"
 #include <iostream>
 
 using namespace std;
@@ -12,10 +12,14 @@ public:
     ~Tableau();
 
     int visiterTableau();
+    int getNbreEtoiles();
+    void setNbreEtoiles(int etoiles);
 
-    int nombreEtoiles; 
+    string getNomTableau();
+    string getDescriptionTableau();
 
 private:
     std::string description;
     std::string nom;
+    int nombreEtoiles;
 };
