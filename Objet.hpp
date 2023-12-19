@@ -9,8 +9,8 @@ public:
     Objet();
     Objet(string nomObjet, string descriptionObjet);
     ~Objet();
-    string getDescription();
-    string getnom();
+    string getDescriptionObjet();
+    string getNomObjet();
 
 
 private:
