@@ -1,3 +1,4 @@
+#pragma once
 #include "Carte.hpp"
 
 Carte::Carte(Piece& salleDepart, vector<Piece> vecteurPieces)
