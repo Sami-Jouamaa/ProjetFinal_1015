@@ -1,3 +1,4 @@
+#pragma once
 #include "Objet.hpp"
 
 Objet::Objet()
@@ -14,12 +15,12 @@ Objet::Objet(string nomObjet, string descriptionObjet)
 
 Objet::~Objet() {}
 
-string Objet::getnom()
+string Objet::getNomObjet()
 {
 	return nom;
 }
 
-string Objet::getDescription()
+string Objet::getDescriptionObjet()
 {
 	return description;
 }
