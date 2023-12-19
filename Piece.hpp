@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include "Objet.hpp"
-#include "Tableau.cpp"
+#include "Tableau.hpp"
 using namespace std;
 
 class Piece
@@ -18,26 +18,39 @@ public:
     void setOuest(Piece* piece);
 
     void ajouterObjet(Objet objet);
+    void ajouterTableau(Tableau tableau);
 
     void connecterPieces(Piece& pieceConnectee, string orientation);
 
     //Getters pour nom, description, pieces au sud, nord, ouest, est
-    string getNom();
-    string getDescription();
+    string getNomPiece();
+    string getDescriptionPiece();
 
     Piece* getSud();
     Piece* getNord();
     Piece* getEst();
     Piece* getOuest();
 
+    int getNbreEtoilesRequises();
+
     bool isObjetsEmpty();
+    bool isTableauxEmpty();
+    bool isTableauInPiece(string nomTableau);
+    bool isObjetInPiece(string nomObjet);
+
+    Objet getObjet(string nomObjet);
+
+    void decrementerTableauEtoiles();
+    int getTableauNbreEtoiles();
 
     void printObjects();
+    void printTableaux();
 
 private:
     string nom;
     string description;
     vector<Objet> objets;
+    vector<Tableau> tableaux;
     int etoilesRequises;
     Piece* nord;
     Piece* sud;
