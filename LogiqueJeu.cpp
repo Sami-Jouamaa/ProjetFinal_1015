@@ -1,6 +1,8 @@
 #pragma once
 #include "LogiqueJeu.hpp"
 
+using namespace std;
+
 LogiqueJeu::LogiqueJeu() {}
 
 LogiqueJeu::~LogiqueJeu() {}
@@ -10,21 +12,20 @@ void LogiqueJeu::startGame()
 	Mario mario(false, 0);
 	vector<Piece> pieces;
 
-	Piece sallePrincipale("Salle principale", "Premiere piece en entrant", 0);
-	Piece couloirGauche("Couloir Gauche", "Connecte au donjon et Tableau de bombes", 0); //Porte gauche
-	Piece salleBombe("Salle avec un Tableau avec des Bombes", "Cul-de-sac", 1); //Tableau bombe
-	Piece salleEnneigee("Salle avec un Tableau enneige", "Portal vers le pays des pingouins", 0); //Tableau pingouins
-	Piece aquarium("Aquarium", "Portail vers le niveau aquatique", 2); //Tableau  eau
-	Piece donjon("Donjon", "Portail vers le niveau de lave", 3); //Niveau lave
-	Piece couloirDroit("Couloir Droit", "Connecte au tableau d'eau, cour arriere et tableau de neige", 0); //Porte droite
-	Piece courArriere("Cour Arriere", "Cul-de-sac", 0);
-	Piece dehors("Dehors", "¿ l'exterieur du ch‚teau", 0); //Salle initiale
-	Piece escaliers("En haut des escaliers", "Debut du deuxieme etage", 0);
-	Piece horloge("Salle avec une Horloge Geante", "Portail vers horloge", 4); //Tableau horloge
-	Piece exposition("Salle d'exposition", "Salle avec une statue", 0);
-	//Piece courArriere("Cour arriere"); On a dej‡ une cour arriere
-	Piece infini("Escalier infini", "Escalier interminable jusqu'au boss", 0);
-	Piece bossFinal("Boss final", "Bowser", 5);
+	Piece sallePrincipale("Salle principale", "La Salle principale du ch√¢teau. Un puit de lumiere puissant vous aveugle legerement.", 0);
+	Piece couloirGauche("Couloir Gauche", "Un couloir intermediaire de la salle principale et d'une autre salle.", 0); //Porte gauche
+	Piece salleBombe("Salle avec un Tableau avec des Bombes", "Une petite salle d'exposition tres modeste. Une etrange toile est accrochee sur le mur vide, avec des dessins ressemblant a des bombes.", 0); //Tableau bombe
+	Piece salleEnneigee("Salle Enneigee", "Une salle froide avec des murs blancs. Au millieu reside un tableau, avec un dessin d'un chalet entoure de pingouins bleus.", 1); //Tableau pingouins
+	Piece aquarium("Aquarium", "Une salle donc les murs sont remplaces par un immense aquarium circulaire. Au millieu de la vitre, un tableau figurant une epave au fond de l'ocean est accroche.", 2); //Tableau  eau
+	Piece donjon("Donjon", "Un endroit sombre et peu accueillant. Pourquoi la princesse possede elle un donjon en premier lieu?", 1); //Niveau lave
+	Piece couloirDroit("Couloir Droit", "Un simple couloir. Il mene a trois portes differentes, une avec une poignee gele, une avec une poignee rouillee et une qui mene vers la cour arriere.", 0); //Porte droite
+	Piece courArriere("Cour Arriere", "Une cour remplie de vegetation incroyable, pourtant tres silencieuse.", 0);
+	Piece dehors("Dehors", "La cour avant du ch√¢teau. Un jardin de marguerites cree un chemin naturel vers la porte d'entree avec un immense canon bleu qui pointe etrangement vers le ch√¢teau.", 0); //Salle initiale
+	Piece escaliers("En haut des escaliers", "Des marches, des marches et encore d'autres marches. Ce ch√¢teau ne finit jamais", 3);
+	Piece horloge("Salle avec une Horloge Geante", "Une salle aux murs avec des motifs indescriptibles. Au millieu se situe une immense horloge.", 0); //Tableau horloge
+	Piece exposition("Salle d'exposition", "Une salle vide, avec une statue sans visage.", 4);
+	Piece infini("Escalier infini", "Une salle vide, avec un escalier rouge qui semble monter vers le haut a l'infini.", 0);
+	Piece bossFinal("Boss final", "L'endroit ou se cache l'inf√¢me Bowser.", 5);
 
 	sallePrincipale.connecterPieces(couloirGauche, "Ouest");
 	sallePrincipale.connecterPieces(couloirDroit, "Est");
@@ -40,24 +41,14 @@ void LogiqueJeu::startGame()
 	escaliers.connecterPieces(exposition, "Ouest");
 	infini.connecterPieces(bossFinal, "Nord");
 
-	Tableau tableauBombe("TableauBombes", "Un portail vers le pays de King Bob-Omb", 1);
-	Tableau tableauPinguoins("TableauPingouins", "Un portail vers le pays enneigÈ des pingouins", 1);
-	Tableau tableauEau("TableauAquatique", "Un tableau menant au niveau aquatique du ch‚teau", 1);
-	Tableau tableauLave("TableauLave", "Un portail vers la terre infernale de lave", 1);
-	Tableau tableauHorloge("TableauHorloge", "Un portail vers le pays des horloges", 1);
-	
-	/*
-	Objet statuePierre("StatuePierre", "Une statue de pierre avec une etoile d'argent et une mysterieuse inscription sur le devant.");
-	Objet muraille("MurailleBleue", "Une immense muraille faisant tout le tour de la piece. Elle est completement bleue avec quelques nuages ici et la");
-	Objet soleil("Soleil", "Un octogone contenant un soleil avec des rayons rouges et des rayons mauves.");
-	
-	exposition.ajouterObjet(statuePierre);
-	sallePrincipale.ajouterObjet(muraille);
-	sallePrincipale.ajouterObjet(soleil);
-	*/
+	Tableau tableauBombe("TableauBombes", "Un portail vers le pays de King Bob-Omb", 1, false);
+	Tableau tableauPingouins("TableauPingouins", "Un portail vers le pays enneige des pingouins", 1, false);
+	Tableau tableauEau("TableauAquatique", "Un tableau menant au niveau aquatique du ch√¢teau", 1, false);
+	Tableau tableauLave("TableauLave", "Un portail vers la terre infernale de lave", 1, false);
+	Tableau tableauHorloge("TableauHorloge", "Un portail vers le pays des horloges", 1, true);
 
 	salleBombe.ajouterTableau(tableauBombe);
-	salleEnneigee.ajouterTableau(tableauPinguoins);
+	salleEnneigee.ajouterTableau(tableauPingouins);
 	aquarium.ajouterTableau(tableauEau);
 	donjon.ajouterTableau(tableauLave);
 	horloge.ajouterTableau(tableauHorloge);
@@ -79,6 +70,19 @@ void LogiqueJeu::startGame()
 	carte.ajouterPiece(salleBombe);
 	carte.ajouterPiece(dehors);
 
+	Objet toad("ToadRouge", "Il est gentil mais parle beaucoup trop fort.");
+	Objet yoshi("Yoshi", "Un dinosaure vert avec un immense nez.");
+	Objet poisson("Poisson", "Un vieux poisson qui tra√Æne sur le plancher.");
+	Objet livre("Livre", "Un vieux livre tra√Æne sur le sol. << L'avenir de la societe industrielle>>, par un certain Theodore John Kaczynski.");
+	Objet luigi("Statue", "Une statue en forme d'etoile a cinq c√¥tes, avec l'inscription << L is real >> sur la base.");
+
+	sallePrincipale.ajouterObjet(toad);
+	courArriere.ajouterObjet(yoshi);
+	aquarium.ajouterObjet(poisson);
+	salleBombe.ajouterObjet(livre);
+	courArriere.ajouterObjet(luigi);
+
+
 	cout << "Welcome to Super Marios 64" << endl; //Nom du jeu
 	cout << endl;
 	cout << "Controles sont :" << endl;
@@ -94,7 +98,7 @@ void LogiqueJeu::startGame()
 
 	while (inputMovement != "START")
 	{
-		cout << "…crivez START pour commencer la partie ";
+		cout << "Ecrivez START pour commencer la partie ";
 		cin >> inputMovement;
 		if (inputMovement == "EXIT")
 		{
@@ -112,7 +116,7 @@ void LogiqueJeu::startGame()
 		{
 			mario.wahoo();
 			cout << "Bravo ! Vous avez fini Super Mario 64" << endl;
-			cout << "Veuillez taper EXIT pour sortir du jeu" << endl;
+			break;
 		}
 
 		else if (!(carte.getSalleActuelle()->isObjetsEmpty()) || !(carte.getSalleActuelle()->isTableauxEmpty()))
@@ -158,7 +162,7 @@ void LogiqueJeu::startGame()
 			}
 			else
 			{
-				cout << "Il n'y a soit pas de piËce au Nord de vous ou, vous n'avez pas assez d'Ètoiles." << endl;
+				cout << "Il n'y a soit pas de piece au Nord de vous ou, vous n'avez pas assez d'etoiles." << endl;
 			}
 		}
 		else if (inputMovement == "S")
@@ -169,7 +173,7 @@ void LogiqueJeu::startGame()
 			}
 			else
 			{
-				cout << "Il n'y a aucun moyen d'aller vers le Sud pour le moment ou alors vous n'avez pas assez d'Ètoiles." << endl;
+				cout << "Il n'y a aucun moyen d'aller vers le Sud pour le moment ou alors vous n'avez pas assez d'etoiles." << endl;
 			}
 		}
 		else if (inputMovement == "W")
@@ -180,7 +184,7 @@ void LogiqueJeu::startGame()
 			}
 			else
 			{
-				cout << "Il n'y a aucun moyen d'aller vers l'Ouest pour le moment ou alors vous n'avez pas assez d'Ètoiles." << endl;
+				cout << "Il n'y a aucun moyen d'aller vers l'Ouest pour le moment ou alors vous n'avez pas assez d'etoiles." << endl;
 			}
 		}
 		else if (inputMovement == "E")
@@ -191,32 +195,58 @@ void LogiqueJeu::startGame()
 			}
 			else
 			{
-				cout << "Il n'y a aucun moyen d'aller vers l'Est pour le moment ou alors vous n'avez pas assez d'Ètoiles." << endl;
+				cout << "Il n'y a aucun moyen d'aller vers l'Est pour le moment ou alors vous n'avez pas assez d'etoiles." << endl;
 			}
 		}
 		else if (inputMovement == "USE")
 		{
-			cout << "Entrez le nom de l'obet avec lequel vous voulez interagir, par exemple, TableauBombes : ";
+			cout << "Entrez le nom de l'obet avec lequel vous voulez interagir, par exemple: Tableau Bombes.: ";
 			cin >> nomObjet;
 			cout << endl;
 
 			if (carte.getSalleActuelle()->isTableauInPiece(nomObjet))
 			{
-				if (carte.getSalleActuelle()->getTableauNbreEtoiles() > 0)
+				if ((carte.getSalleActuelle()->getTableau(0).getNecessiteYoshi()) && !(mario.possedeYoshi()))
+				{
+					cout << "Le tableau est trop haut pour √™tre atteint! Si seulement vous aviez quelque chose pour aider..." << endl;
+				}
+
+				else if ((carte.getSalleActuelle()->getTableau(0).getNecessiteYoshi()) && (mario.possedeYoshi()) && (carte.getSalleActuelle()->getTableauNbreEtoiles() > 0))
 				{
 					mario.gagnerEtoile();
-					carte.getSalleActuelle()->decrementerTableauEtoiles();
 					mario.wahoo();
+					carte.getSalleActuelle()->decrementerTableauEtoiles();
+					carte.setSalleActuelle(sallePrincipale);
+					cout << "Woosh! Une lumiere blanche plus forte que 1000 soleils vous aveugle, et vous vous retrouvez dans la salle principale du ch√¢teau. Vous vous sentez plus confiant." << endl;
+
+				}
+
+				else if (carte.getSalleActuelle()->getTableauNbreEtoiles() > 0)
+				{
+					mario.gagnerEtoile();
+					mario.wahoo();
+					carte.getSalleActuelle()->decrementerTableauEtoiles();
+					carte.setSalleActuelle(sallePrincipale);
+					cout << "Woosh! Une lumiere blanche plus forte que 1000 soleils vous aveugle, et vous vous retrouvez dans la salle principale du ch√¢teau. Vous vous sentez plus confiant." << endl;
+
 				}
 				else
 				{
-					cout << "Vous avez dÈj‡ toutes les Ètoiles de ce tableau" << endl;
+					cout << "Vous avez deja toutes les etoiles de ce tableau" << endl;
 				}
 			}
 
 			else if (carte.getSalleActuelle()->isObjetInPiece(nomObjet))
 			{
-				carte.getSalleActuelle()->printObjectsDescription(nomObjet);
+				if ((nomObjet == "Yoshi") && !(mario.possedeYoshi()))
+				{
+					mario.trouverYoshi();
+				}
+				mario.ajouterObjet(carte.getSalleActuelle()->getObjet(nomObjet));
+
+				cout << "Objet acquis! Il n'est plus dans la piece desormais, mais plut√¥t dans l'immense poche de votre salopette." << endl;
+
+				carte.getSalleActuelle()->retirerObjet(carte.getSalleActuelle()->getObjet(nomObjet)); // ici jsp trop comment identifier
 			}
 
 			else
@@ -231,7 +261,7 @@ void LogiqueJeu::startGame()
 
 		else
 		{
-			cout << "Veuillez entrer une commande de dÈplacement valide." << endl;
+			cout << "Veuillez entrer une commande de deplacement valide." << endl;
 		}
 	}
 }
