@@ -246,7 +246,7 @@ void LogiqueJeu::startGame()
 
 				cout << "Objet acquis! Il n'est plus dans la piece desormais, mais plutôt dans l'immense poche de votre salopette." << endl;
 
-				carte.getSalleActuelle()->retirerObjet(carte.getSalleActuelle()->getObjet(nomObjet)); // ici jsp trop comment identifier
+				carte.getSalleActuelle()->retirerObjet(carte.getSalleActuelle()->getObjet(nomObjet));
 			}
 
 			else
