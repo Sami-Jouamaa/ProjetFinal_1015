@@ -33,7 +33,7 @@ public:
 
     int getNbreEtoilesRequises();
 
-    Tableau getTableau(int i = 1);
+    Tableau getTableau(int index);
 
 
     bool isObjetsEmpty();
@@ -46,13 +46,13 @@ public:
     void decrementerTableauEtoiles();
     int getTableauNbreEtoiles();
 
-    void printObjects();
+    void printObjectsNom();
+    void printObjectsDescription(string nomObjetAImprimer);
     void printTableaux();
 
-    void ajouterObjet(Objet objet);
-    void retirerObjet(const Objet& objetAretirer);
+    void retirerObjet(Objet objetAretirer);
 
-    
+
 
 private:
     vector<Tableau> tableaux;
