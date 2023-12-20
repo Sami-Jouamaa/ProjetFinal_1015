@@ -1,7 +1,7 @@
 #pragma once
 #include "Tableau.hpp"
 
-Tableau::Tableau(string nomObjet, string descriptionObjet, int etoiles, bool yoshi = false)
+Tableau::Tableau(string nomObjet, string descriptionObjet, int etoiles, bool yoshi)
 {
     nom = nomObjet;
     description = descriptionObjet;
@@ -10,6 +10,11 @@ Tableau::Tableau(string nomObjet, string descriptionObjet, int etoiles, bool yos
 }
 
 Tableau::~Tableau() {}
+
+bool Tableau::getNecessiteYoshi()
+{
+    return necessiteYoshi;
+}
 
 int Tableau::visiterTableau() {
     if (nombreEtoiles > 0) {
@@ -41,4 +46,3 @@ string Tableau::getDescriptionTableau()
 {
     return description;
 }
-
