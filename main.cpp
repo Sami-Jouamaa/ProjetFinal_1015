@@ -22,7 +22,7 @@ int main()
 	Piece aquarium("Aquarium", "Une salle donc les murs sont remplacés par un immense aquarium circulaire. Au millieu de la vitre, un tableau figurant une épave au fond de l'océan est accroché.", 2); //Tableau  eau
 	Piece donjon("Donjon", "Un endroit sombre et peu accueillant. Pourquoi la princesse possède elle un donjon en premier lieu?", 1); //Niveau lave
 	Piece couloirDroit("Couloir Droit", "Un simple couloir. Il mène à trois portes différentes, une avec une poignée gelé, une avec une poignée rouillée et une qui mène vers la cour arrière.", 0); //Porte droite
-	Piece courArriere("Cour Arriere", "Une cour remplie de végétation incroyable, pourtant très silencieuse. Au millieu, une statue en forme d'étoile à cinq côté se tient seule.", 0);
+	Piece courArriere("Cour Arriere", "Une cour remplie de végétation incroyable, pourtant très silencieuse.", 0);
 	Piece dehors("Dehors", "La cour avant du château. Un jardin de marguerites crée un chemin naturel vers la porte d'entrée avec un immense canon bleu qui pointe étrangement vers le château.", 0); //Salle initiale
 	Piece escaliers("En haut des escaliers", "Des marches, des marches et encore d'autres marches. Ce château ne finit jamais", 3);
 	Piece horloge("Salle avec une Horloge Geante", "Une salle aux murs avec des motifs indescriptibles. Au millieu se situe une immense horloge.", 0); //Tableau horloge
@@ -73,14 +73,17 @@ int main()
 	carte.ajouterPiece(salleBombe);
 	carte.ajouterPiece(dehors);
 
-	Objet toad("Un Toad Rouge", "Il sent pas très bon.");
+	Objet toad("Un Toad Rouge", "Il est gentil mais parle beaucoup trop fort.");
 	Objet yoshi("Yoshi", "Un dinosaure vert avec un immense nez.");
 	Objet poisson("Poisson", "Un vieux poisson qui traîne sur le plancher.");
-
+	Objet livre("Livre", "Un vieux livre traîne sur le sol. << L'avenir de la société industrielle>>, par un certain Theodore John Kaczynski.");
+	Objet luigi("Statue", "Une statue en forme d'étoile à cinq côtés, avec l'inscription << L is real >> sur la base.");
 
 	sallePrincipale.ajouterObjet(toad);
 	courArriere.ajouterObjet(yoshi);
 	aquarium.ajouterObjet(poisson);
+	salleBombe.ajouterObjet(livre);
+	courArriere.ajouterObjet(luigi);
 
 
 	cout << "Welcome to Super Marios 64" << endl; //Nom du jeu
