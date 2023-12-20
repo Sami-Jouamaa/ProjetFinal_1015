@@ -46,11 +46,6 @@ Piece* Piece::getOuest()
     return ouest;
 }
 
-void Piece::ajouterObjet(Objet objet)
-{
-    objets.push_back(objet);
-}
-
 void Piece::connecterPieces(Piece& pieceConnectee, string orientation)
 {
     if (orientation == "Nord" || orientation == "nord") {
@@ -96,14 +91,17 @@ int Piece::getNbreEtoilesRequises()
     return etoilesRequises;
 }
 
-Tableau getTableau(int i = 0) {
-        if (i >= 0 && i < tableaux.size()) { // ICI!!!!
-            return tableaux[i];
-        } 
-        else{
-            return tableaux[0];
-        }
+Tableau Piece::getTableau(int index) 
+{
+    if (index >= 0 && index < tableaux.size()) 
+    {
+        return tableaux[index];
     }
+    else 
+    {
+        return tableaux[0];
+    }
+}
 
 bool Piece::isObjetsEmpty()
 {
@@ -181,11 +179,11 @@ void Piece::decrementerTableauEtoiles()
     tableaux[0].setNbreEtoiles(0);
 }
 
-void Piece::printObjects()
+void Piece::printObjectsNom()
 {
     for (int i = 0; i < objets.size(); i++)
     {
-        cout << objets[i].getNomObjet() << ": " << objets[i].getDescriptionObjet() << endl;
+        cout << objets[i].getNomObjet() << endl;
     }
 }
 
@@ -212,12 +210,30 @@ int Piece::getTableauNbreEtoiles()
     return (tableaux[0].getNbreEtoiles());
 }
 
-void retirerObjet(const Objet& objetAretirer) { // ICI!!!!
-    auto it = std::find(objets.begin(), objets.end(), objetAretirer);
-    if (it != objets.end()) {
-        objets.erase(it);
-    } else {
-        std::cerr << "L'objet n'a pas été trouvé dans le vecteur.";
+void Piece::printObjectsDescription(string nomObjetAImprimer)
+{
+    for (int i = 0; i < objets.size(); i++)
+    {
+        if (objets[i].getNomObjet() == nomObjetAImprimer)
+        {
+            cout << objets[i].getDescriptionObjet();
+            break;
+        }
+        else
+        {
+            continue;
+        }
     }
 }
 
+void Piece::retirerObjet(Objet objetAretirer) 
+{
+    for (int i = 0; i < objets.size(); i++)
+    {
+        if (objets[i].getNomObjet() == objetAretirer.getNomObjet())
+        {
+            Objet objetVide = Objet();
+            objets[i] = objetVide;
+        }
+    }
+}
