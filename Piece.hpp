@@ -33,6 +33,9 @@ public:
 
     int getNbreEtoilesRequises();
 
+    Tableau getTableau(int i = 1);
+
+
     bool isObjetsEmpty();
     bool isTableauxEmpty();
     bool isTableauInPiece(string nomTableau);
@@ -46,11 +49,16 @@ public:
     void printObjects();
     void printTableaux();
 
+    void ajouterObjet(Objet objet);
+    void retirerObjet(const Objet& objetAretirer);
+
+    
+
 private:
+    vector<Tableau> tableaux;
+    vector<Objet> objets;
     string nom;
     string description;
-    vector<Objet> objets;
-    vector<Tableau> tableaux;
     int etoilesRequises;
     Piece* nord;
     Piece* sud;

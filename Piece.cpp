@@ -96,6 +96,15 @@ int Piece::getNbreEtoilesRequises()
     return etoilesRequises;
 }
 
+Tableau getTableau(int i = 0) {
+        if (i >= 0 && i < tableaux.size()) { // ICI!!!!
+            return tableaux[i];
+        } 
+        else{
+            return tableaux[0];
+        }
+    }
+
 bool Piece::isObjetsEmpty()
 {
     if (objets.empty())
@@ -185,6 +194,11 @@ void Piece::ajouterTableau(Tableau tableau)
     tableaux.push_back(tableau);
 }
 
+void Piece::ajouterObjet(Objet objet)
+{
+    objets.push_back(objet);
+}
+
 void Piece::printTableaux()
 {
     for (int i = 0; i < tableaux.size(); i++)
@@ -196,5 +210,14 @@ void Piece::printTableaux()
 int Piece::getTableauNbreEtoiles()
 {
     return (tableaux[0].getNbreEtoiles());
+}
+
+void retirerObjet(const Objet& objetAretirer) { // ICI!!!!
+    auto it = std::find(objets.begin(), objets.end(), objetAretirer);
+    if (it != objets.end()) {
+        objets.erase(it);
+    } else {
+        std::cerr << "L'objet n'a pas été trouvé dans le vecteur.";
+    }
 }
 

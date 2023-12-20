@@ -1,11 +1,12 @@
 #pragma once
 #include "Tableau.hpp"
 
-Tableau::Tableau(string nomObjet, string descriptionObjet, int etoiles)
+Tableau::Tableau(string nomObjet, string descriptionObjet, int etoiles, bool yoshi = false)
 {
     nom = nomObjet;
     description = descriptionObjet;
     nombreEtoiles = etoiles;
+    necessiteYoshi = yoshi;
 }
 
 Tableau::~Tableau() {}

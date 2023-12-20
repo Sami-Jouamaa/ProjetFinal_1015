@@ -29,6 +29,16 @@ void Mario::ajouterObjet(Objet objet)
 	objets.push_back(objet);
 }
 
+void Mario::trouverYoshi()
+{
+	avoirYoshi = true;
+}
+
+bool Mario::possedeYoshi()
+{
+	return avoirYoshi;
+}
+
 void Mario::wahoo()
 {
 	cout << "Wahoo !" << endl;

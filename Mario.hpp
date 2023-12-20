@@ -17,6 +17,8 @@ public:
     void gagnerEtoile();
     int getNbreEtoilesMario();
     void setNbreEtoilesMario(int etoiles);
+    void trouverYoshi();
+    bool possedeYoshi();
 
 private:
     vector<Objet> objets;

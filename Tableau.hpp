@@ -8,7 +8,7 @@ using namespace std;
 class Tableau : public Objet
 {
 public:
-    Tableau(string nomObjet, string descriptionObjet, int etoiles);
+    Tableau(string nomObjet, string descriptionObjet, int etoiles, bool yoshi = false);
     ~Tableau();
 
     int visiterTableau();
@@ -22,4 +22,5 @@ private:
     std::string description;
     std::string nom;
     int nombreEtoiles;
+    bool necessiteYoshi;
 };

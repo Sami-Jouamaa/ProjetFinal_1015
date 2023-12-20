@@ -1,4 +1,3 @@
-#pragma once
 #include "Objet.hpp"
 #include "Piece.hpp"
 #include "Mario.hpp"
@@ -16,21 +15,20 @@ int main()
 	
 	//Nombres d'etoiles a changer au besoin
 
-	Piece sallePrincipale("Salle principale", "Premiere piece en entrant", 0);
-	Piece couloirGauche("Couloir Gauche", "Connecte au donjon et Tableau de bombes", 0); //Porte gauche
-	Piece salleBombe("Salle avec un Tableau avec des Bombes", "Cul-de-sac", 1); //Tableau bombe
-	Piece salleEnneigee("Salle avec un Tableau enneige", "Portal vers le pays des pingouins", 0); //Tableau pingouins
-	Piece aquarium("Aquarium", "Portail vers le niveau aquatique", 2); //Tableau  eau
-	Piece donjon("Donjon", "Portail vers le niveau de lave", 3); //Niveau lave
-	Piece couloirDroit("Couloir Droit", "Connecte au tableau d'eau, cour arriere et tableau de neige", 0); //Porte droite
-	Piece courArriere("Cour Arriere", "Cul-de-sac", 0);
-	Piece dehors("Dehors", "À l'exterieur du château", 0); //Salle initiale
-	Piece escaliers("En haut des escaliers", "Debut du deuxieme etage", 0);
-	Piece horloge("Salle avec une Horloge Geante", "Portail vers horloge", 4); //Tableau horloge
-	Piece exposition("Salle d'exposition", "Salle avec une statue", 0);
-	//Piece courArriere("Cour arriere"); On a dejà une cour arriere
-	Piece infini("Escalier infini", "Escalier interminable jusqu'au boss", 0);
-	Piece bossFinal("Boss final", "Bowser", 5);
+	Piece sallePrincipale("Salle principale", "La Salle principale du château. Un puit de lumière puissant vous aveugle légèrement.", 0);
+	Piece couloirGauche("Couloir Gauche", "Un couloir intermédiaire de la salle principale et d'une autre salle.", 0); //Porte gauche
+	Piece salleBombe("Salle avec un Tableau avec des Bombes", "Une petite salle d'exposition très modeste. Une étrange toile est accrochée sur le mur vide, avec des dessins ressemblant à des bombes.", 0); //Tableau bombe
+	Piece salleEnneigee("Salle Enneigée", "Une salle froide avec des murs blancs. Au millieu réside un tableau, avec un dessin d'un chalet entouré de pingouins bleus.",1); //Tableau pingouins
+	Piece aquarium("Aquarium", "Une salle donc les murs sont remplacés par un immense aquarium circulaire. Au millieu de la vitre, un tableau figurant une épave au fond de l'océan est accroché.", 2); //Tableau  eau
+	Piece donjon("Donjon", "Un endroit sombre et peu accueillant. Pourquoi la princesse possède elle un donjon en premier lieu?", 1); //Niveau lave
+	Piece couloirDroit("Couloir Droit", "Un simple couloir. Il mène à trois portes différentes, une avec une poignée gelé, une avec une poignée rouillée et une qui mène vers la cour arrière.", 0); //Porte droite
+	Piece courArriere("Cour Arriere", "Une cour remplie de végétation incroyable, pourtant très silencieuse. Au millieu, une statue en forme d'étoile à cinq côté se tient seule.", 0);
+	Piece dehors("Dehors", "La cour avant du château. Un jardin de marguerites crée un chemin naturel vers la porte d'entrée avec un immense canon bleu qui pointe étrangement vers le château.", 0); //Salle initiale
+	Piece escaliers("En haut des escaliers", "Des marches, des marches et encore d'autres marches. Ce château ne finit jamais", 3);
+	Piece horloge("Salle avec une Horloge Geante", "Une salle aux murs avec des motifs indescriptibles. Au millieu se situe une immense horloge.", 0); //Tableau horloge
+	Piece exposition("Salle d'exposition", "Une salle vide, avec une statue sans visage.", 4);
+	Piece infini("Escalier infini", "Une salle vide, avec un escalier rouge qui semble monter vers le haut à l'infini.", 0);
+	Piece bossFinal("Boss final", "L'endroit ou se cache l'infâme Bowser.", 5);
 
 	sallePrincipale.connecterPieces(couloirGauche, "Ouest");
 	sallePrincipale.connecterPieces(couloirDroit, "Est");
@@ -47,13 +45,13 @@ int main()
 	infini.connecterPieces(bossFinal, "Nord");
 
 	Tableau tableauBombe("TableauBombes", "Un portail vers le pays de King Bob-Omb", 1);
-	Tableau tableauPinguoins("TableauPingouins", "Un portail vers le pays enneigé des pingouins", 1);
-	Tableau tableauEau("TableauAquatique", "Un tableau menant au niveau aquatique du château", 1);
-	Tableau tableauLave("TableauLave", "Un portail vers la terre infernale de lave", 1);
-	Tableau tableauHorloge("TableauHorloge", "Un portail vers le pays des horloges", 1);
+	Tableau tableauPingouins("TableauPingouins", "Un portail vers le pays enneigé des pingouins", 1);
+	Tableau tableauEau("Tableau quatique", "Un tableau menant au niveau aquatique du château", 1);
+	Tableau tableauLave("Tableau Lave", "Un portail vers la terre infernale de lave", 1);
+	Tableau tableauHorloge("Tableau de l'horloge", "Un portail vers le pays des horloges", 1, true);
 
 	salleBombe.ajouterTableau(tableauBombe);
-	salleEnneigee.ajouterTableau(tableauPinguoins);
+	salleEnneigee.ajouterTableau(tableauPingouins);
 	aquarium.ajouterTableau(tableauEau);
 	donjon.ajouterTableau(tableauLave);
 	horloge.ajouterTableau(tableauHorloge);
@@ -74,6 +72,16 @@ int main()
 	carte.ajouterPiece(donjon);
 	carte.ajouterPiece(salleBombe);
 	carte.ajouterPiece(dehors);
+
+	Objet toad("Un Toad Rouge", "Il sent pas très bon.");
+	Objet yoshi("Yoshi", "Un dinosaure vert avec un immense nez.");
+	Objet poisson("Poisson", "Un vieux poisson qui traîne sur le plancher.");
+
+
+	sallePrincipale.ajouterObjet(toad);
+	courArriere.ajouterObjet(yoshi);
+	aquarium.ajouterObjet(poisson);
+
 
 	cout << "Welcome to Super Marios 64" << endl; //Nom du jeu
 	cout << endl;
@@ -108,7 +116,7 @@ int main()
 		{
 			mario.wahoo();
 			cout << "Bravo ! Vous avez fini Super Mario 64" << endl;
-			cout << "Veuillez taper EXIT pour sortir du jeu" << endl;
+			break;
 		}
 
 		else if (!(carte.getSalleActuelle()->isObjetsEmpty()) || !(carte.getSalleActuelle()->isTableauxEmpty()))
@@ -198,11 +206,29 @@ int main()
 
 			if (carte.getSalleActuelle()->isTableauInPiece(nomObjet))
 			{
-				if (carte.getSalleActuelle()->getTableauNbreEtoiles() > 0)
+				if (carte.getSalleActuelle()->getTableau()->necessiteYoshi == true && mario.possedeYoshi() == false)
+					{
+					cout << "Le tableau est trop haut pour être atteint! Si seulement vous aviez quelque chose pour aider..." << endl;
+					}
+
+				else if (carte.getSalleActuelle()->getTableau()->necessiteYoshi == true && mario.possedeYoshi() == true && carte.getSalleActuelle()->getTableauNbreEtoiles() > 0)
+					{
+					mario.gagnerEtoile();
+					mario.wahoo();
+					carte.getSalleActuelle()->decrementerTableauEtoiles();
+					carte.setSalleActuelle(sallePrincipale);
+					cout << "Woosh! Une lumière blanche plus forte que 1000 soleils vous aveugle, et vous vous retrouvez dans la salle principale du château. Vous vous sentez plus confiant." << endl;
+					
+					}
+				
+				else if (carte.getSalleActuelle()->getTableauNbreEtoiles() > 0)
 				{
 					mario.gagnerEtoile();
-					carte.getSalleActuelle()->decrementerTableauEtoiles();
 					mario.wahoo();
+					carte.getSalleActuelle()->decrementerTableauEtoiles();
+					carte.setSalleActuelle(sallePrincipale);
+					cout << "Woosh! Une lumière blanche plus forte que 1000 soleils vous aveugle, et vous vous retrouvez dans la salle principale du château. Vous vous sentez plus confiant." << endl;
+					
 				}
 				else
 				{
@@ -212,7 +238,14 @@ int main()
 
 			else if (carte.getSalleActuelle()->isObjetInPiece(nomObjet))
 			{
+				if (nomObjet == "Yoshi" && mario.possedeYoshi() == false){
+					mario.trouverYoshi();
+				}
 				mario.ajouterObjet(carte.getSalleActuelle()->getObjet(nomObjet));
+
+				cout << "Objet acquis! Il n'est plus dans la piece désormais, mais plutôt dans l'immense poche de votre salopette." << endl;
+
+				carte.getSalleActuelle()->retirerObjet(getObjet(nomObjet)); // ici jsp trop comment identifier
 			}
 
 			else
